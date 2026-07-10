@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="필름카메라와 디지털카메라의 구조, 기능, 촬영 모드, 작동 원리를 쉽게 배우는 인터랙티브 전시형 웹페이지">
+  <title>필름카메라와 디지털카메라의 구조와 원리</title>
+  <link rel="preload" href="assets/camera-mark.svg" as="image" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+
+  <header class="hero shell" id="top">
+    <nav class="topbar" aria-label="주요 탐색">
+      <a class="brand" href="#top">
+        <img src="assets/camera-mark.svg" alt="" width="34" height="34">
+        <span>Camera Guide Exhibit</span>
+      </a>
+      <div class="topbar-links">
+        <a href="#structure">구조</a>
+        <a href="#modes">모드</a>
+        <a href="#exposure-lab">설정 체험</a>
+      </div>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">초보자를 위한 인터랙티브 카메라 전시</p>
+        <h1>필름카메라와 디지털카메라의 구조와 원리</h1>
+        <p class="hero-text">
+          큰 비주얼과 쉬운 설명으로 카메라를 한눈에 이해해보세요.
+          부품을 눌러 보고, 모드를 돌려 보고, 빛이 지나가는 길까지 직접 체험할 수 있어요.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#structure">구조 살펴보기</a>
+          <a class="button ghost" href="#compare">필름 vs 디지털 보기</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="hero-stage">
+          <div class="hero-glow"></div>
+          <svg class="hero-camera" viewBox="0 0 760 500" role="img" aria-label="필름카메라와 디지털카메라를 상징하는 카메라 일러스트">
+            <defs>
+              <linearGradient id="heroBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2b3450"></stop>
+                <stop offset="100%" stop-color="#111827"></stop>
+              </linearGradient>
+              <radialGradient id="heroLens" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#9bd6ff"></stop>
+                <stop offset="50%" stop-color="#31559d"></stop>
+                <stop offset="100%" stop-color="#090d18"></stop>
+              </radialGradient>
+              <linearGradient id="lightBeam" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(88,207,255,0)"></stop>
+                <stop offset="60%" stop-color="rgba(88,207,255,0.6)"></stop>
+                <stop offset="100%" stop-color="rgba(88,207,255,0)"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="170" y="130" width="420" height="210" rx="36" fill="url(#heroBody)"></rect>
+            <rect x="255" y="95" width="170" height="50" rx="20" fill="#20283e"></rect>
+            <rect x="455" y="110" width="90" height="34" rx="15" fill="#29324d"></rect>
+            <circle cx="585" cy="170" r="26" fill="#5c688e"></circle>
+            <circle cx="290" cy="238" r="102" fill="#1a2238" stroke="#506083" stroke-width="8"></circle>
+            <circle cx="290" cy="238" r="74" fill="url(#heroLens)"></circle>
+            <circle cx="290" cy="238" r="38" fill="#02050b"></circle>
+            <rect x="474" y="196" width="78" height="72" rx="18" fill="#0f1728" stroke="#546686" stroke-width="6"></rect>
+            <path d="M80 238 H180" stroke="url(#lightBeam)" stroke-width="12" stroke-linecap="round"></path>
+            <path d="M100 210 H195" stroke="url(#lightBeam)" stroke-width="8" stroke-linecap="round"></path>
+            <path d="M100 266 H195" stroke="url(#lightBeam)" stroke-width="8" stroke-linecap="round"></path>
+            <circle cx="628" cy="190" r="17" fill="#9de2ff"></circle>
+            <circle cx="628" cy="190" r="8" fill="#eefbff"></circle>
+            <rect x="520" y="100" width="36" height="18" rx="9" fill="#dfe9ff"></rect>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section shell" id="structure">
+      <div class="section-heading reveal">
+        <p class="eyebrow">핵심 구조도</p>
+        <h2>클릭하면서 배우는 카메라 구조</h2>
+        <p>클릭하거나 키보드 포커스로 부위를 선택해 보세요. 오른쪽 카드에 아주 쉬운 설명이 나와요.</p>
+      </div>
+
+      <div class="structure-toolbar reveal" role="tablist" aria-label="카메라 종류 전환">
+        <button class="toggle-btn active" type="button" data-camera-toggle="film" role="tab" aria-selected="true">필름카메라 보기</button>
+        <button class="toggle-btn" type="button" data-camera-toggle="digital" role="tab" aria-selected="false">디지털카메라 보기</button>
+      </div>
+
+      <div class="structure-layout">
+        <div class="camera-board reveal">
+          <div class="camera-canvas">
+            <svg id="camera-diagram" viewBox="0 0 900 520" role="img" aria-label="카메라 구조도">
+              <defs>
+                <linearGradient id="diagramBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#26314a"></stop>
+                  <stop offset="100%" stop-color="#101726"></stop>
+                </linearGradient>
+                <linearGradient id="accentFilm" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#d6a968"></stop>
+                  <stop offset="100%" stop-color="#8d5c28"></stop>
+                </linearGradient>
+                <linearGradient id="accentSensor" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#60a5fa"></stop>
+                  <stop offset="100%" stop-color="#2563eb"></stop>
+                </linearGradient>
+              </defs>
+              <rect x="185" y="145" width="500" height="230" rx="40" fill="url(#diagramBody)"></rect>
+              <rect x="300" y="105" width="160" height="55" rx="22" fill="#1b2338"></rect>
+              <circle id="part-lens" class="camera-part selected" cx="300" cy="260" r="110"></circle>
+              <circle cx="300" cy="260" r="78" fill="#1d4f82" opacity="0.65"></circle>
+              <circle cx="300" cy="260" r="42" fill="#060b14"></circle>
+              <circle id="part-aperture" class="camera-part inner-part" cx="300" cy="260" r="54"></circle>
+              <rect id="part-shutter" class="camera-part" x="390" y="228" width="34" height="72" rx="12"></rect>
+              <rect id="part-film-chamber" class="camera-part film-only" x="500" y="205" width="112" height="110" rx="22"></rect>
+              <rect id="part-sensor" class="camera-part digital-only" x="500" y="220" width="108" height="82" rx="18"></rect>
+              <rect x="502" y="320" width="104" height="24" rx="12" fill="#1e293b" class="digital-only"></rect>
+              <rect x="620" y="178" width="78" height="66" rx="18" fill="#edf6ff" opacity="0.95"></rect>
+              <rect id="part-viewfinder" class="camera-part" x="637" y="197" width="44" height="28" rx="8"></rect>
+              <circle id="part-mode-dial" class="camera-part" cx="585" cy="126" r="32"></circle>
+              <rect id="part-shutter-button" class="camera-part" x="530" y="98" width="34" height="18" rx="8"></rect>
+              <rect id="part-flash" class="camera-part" x="640" y="118" width="42" height="18" rx="8"></rect>
+            </svg>
+
+            <div class="hotspots" aria-label="카메라 부위 선택">
+              <button class="hotspot active" type="button" style="--x:30%; --y:50%;" data-part="lens" aria-label="렌즈 설명 보기"></button>
+              <button class="hotspot" type="button" style="--x:30%; --y:50%;" data-part="aperture" aria-label="조리개 설명 보기"></button>
+              <button class="hotspot" type="button" style="--x:43%; --y:50%;" data-part="shutter" aria-label="셔터 설명 보기"></button>
+              <button class="hotspot film-only active-camera" type="button" style="--x:64%; --y:49%;" data-part="film-chamber" aria-label="필름실 설명 보기"></button>
+              <button class="hotspot digital-only" type="button" style="--x:64%; --y:49%;" data-part="sensor" aria-label="이미지 센서 설명 보기"></button>
+              <button class="hotspot" type="button" style="--x:83%; --y:39%;" data-part="viewfinder" aria-label="뷰파인더 설명 보기"></button>
+              <button class="hotspot" type="button" style="--x:74%; --y:15%;" data-part="mode-dial" aria-label="모드 다이얼 설명 보기"></button>
+              <button class="hotspot" type="button" style="--x:68%; --y:11%;" data-part="shutter-button" aria-label="셔터 버튼 설명 보기"></button>
+              <button class="hotspot" type="button" style="--x:84%; --y:15%;" data-part="flash" aria-label="플래시 설명 보기"></button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="info-panel reveal" aria-live="polite">
+          <div class="panel-tag" id="panel-type-label">필름카메라</div>
+          <h3 id="part-name">렌즈</h3>
+          <p id="part-summary"></p>
+          <dl class="info-list">
+            <div>
+              <dt>실제 역할</dt>
+              <dd id="part-role"></dd>
+            </div>
+            <div>
+              <dt>사진에 주는 영향</dt>
+              <dd id="part-impact"></dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section shell" id="compare">
+      <div class="section-heading reveal">
+        <p class="eyebrow">기록 방식 비교</p>
+        <h2>필름과 디지털은 어디에 사진을 남길까요?</h2>
+        <p>같은 빛을 받아도 기록하는 방식은 달라요. 아래 카드와 흐름도를 같이 보면 더 쉬워요.</p>
+      </div>
+      <div class="compare-grid" id="compare-grid"></div>
+    </section>
+
+    <section class="section shell" id="modes">
+      <div class="section-heading reveal">
+        <p class="eyebrow">촬영 모드 다이얼</p>
+        <h2>모드를 돌리면 카메라의 도와주는 방식이 바뀌어요</h2>
+        <p>원하는 항목을 누르면 무엇을 자동으로 하고, 언제 쓰면 좋은지 바로 볼 수 있어요.</p>
+      </div>
+      <div class="dial-layout">
+        <div class="dial-wrap reveal">
+          <div class="mode-dial" id="mode-dial" aria-label="촬영 모드 선택"></div>
+        </div>
+        <article class="mode-card reveal" aria-live="polite">
+          <div class="panel-tag" id="mode-title-mini">Auto</div>
+          <h3 id="mode-name">자동 모드</h3>
+          <p id="mode-summary"></p>
+          <dl class="info-list compact">
+            <div>
+              <dt>자동 / 수동</dt>
+              <dd id="mode-control"></dd>
+            </div>
+            <div>
+              <dt>언제 쓰면 좋을까?</dt>
+              <dd id="mode-usage"></dd>
+            </div>
+            <div>
+              <dt>한 줄 요약</dt>
+              <dd id="mode-tip"></dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="light-path">
+      <div class="section-heading reveal">
+        <p class="eyebrow">작동 원리 애니메이션</p>
+        <h2>빛이 카메라 안에서 지나가는 길</h2>
+        <p>빛이 렌즈를 지나 사진이 되기까지의 과정을 화살표와 단계로 따라가 보세요.</p>
+      </div>
+      <div class="flow-toolbar reveal" role="tablist" aria-label="작동 원리 전환">
+        <button class="flow-toggle active" type="button" data-flow="film" aria-selected="true">필름 흐름</button>
+        <button class="flow-toggle" type="button" data-flow="digital" aria-selected="false">디지털 흐름</button>
+      </div>
+      <div class="flow-grid">
+        <div class="flow-visual reveal">
+          <svg viewBox="0 0 900 240" role="img" aria-label="빛의 경로 설명 그림">
+            <defs>
+              <linearGradient id="pathLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#60a5fa"></stop>
+                <stop offset="100%" stop-color="#22d3ee"></stop>
+              </linearGradient>
+            </defs>
+            <circle cx="90" cy="120" r="46" fill="#dbeafe"></circle>
+            <circle cx="250" cy="120" r="40" fill="#1e293b"></circle>
+            <circle cx="390" cy="120" r="34" fill="#475569"></circle>
+            <rect x="500" y="86" width="54" height="68" rx="16" fill="#0f172a"></rect>
+            <rect x="666" y="74" width="110" height="92" rx="20" class="flow-target" id="flow-target-box"></rect>
+            <path class="beam beam-one" d="M136 120 H214"></path>
+            <path class="beam beam-two" d="M290 120 H356"></path>
+            <path class="beam beam-three" d="M424 120 H500"></path>
+            <path class="beam beam-four" d="M556 120 H666"></path>
+            <text x="90" y="125" text-anchor="middle">빛</text>
+            <text x="250" y="125" text-anchor="middle" fill="#fff">렌즈</text>
+            <text x="390" y="125" text-anchor="middle" fill="#fff">조리개</text>
+            <text x="527" y="125" text-anchor="middle" fill="#fff">셔터</text>
+            <text x="721" y="125" text-anchor="middle" fill="#fff" id="flow-target-label">필름</text>
+          </svg>
+        </div>
+        <div class="flow-card reveal">
+          <h3 id="flow-name">필름카메라 흐름</h3>
+          <ol class="flow-steps" id="flow-steps"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="exposure-lab">
+      <div class="section-heading reveal">
+        <p class="eyebrow">노출 3요소 체험</p>
+        <h2>조리개, 셔터 속도, ISO를 움직여 보세요</h2>
+        <p>사진 느낌이 어떻게 달라지는지 실제처럼 보이도록 간단한 미리보기를 만들었어요.</p>
+      </div>
+      <div class="lab-grid">
+        <div class="preview-card reveal">
+          <div class="preview-stage" id="preview-stage">
+            <div class="preview-background"></div>
+            <div class="preview-subject blur-layer"></div>
+            <div class="preview-subject sharp-layer"></div>
+            <div class="noise-layer" id="noise-layer" aria-hidden="true"></div>
+            <div class="preview-caption">
+              <strong id="preview-title">부드러운 인물 느낌</strong>
+              <span id="preview-description">조리개가 열리면 배경이 더 흐려져요.</span>
+            </div>
+          </div>
+        </div>
+        <div class="controls-card reveal">
+          <div class="control-group">
+            <label for="aperture-range">조리개 (F값)</label>
+            <input id="aperture-range" type="range" min="18" max="160" value="28" step="1">
+            <div class="control-meta">
+              <span>배경 흐림 많음</span>
+              <strong id="aperture-value">F2.8</strong>
+              <span>전체 선명</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="shutter-range">셔터 속도</label>
+            <input id="shutter-range" type="range" min="0" max="4" value="3" step="1">
+            <div class="control-meta">
+              <span>느림</span>
+              <strong id="shutter-value">1/500초</strong>
+              <span>빠름</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="iso-range">ISO</label>
+            <input id="iso-range" type="range" min="100" max="3200" value="200" step="100">
+            <div class="control-meta">
+              <span>깨끗함</span>
+              <strong id="iso-value">ISO 200</strong>
+              <span>노이즈 많음</span>
+            </div>
+          </div>
+          <div class="lab-notes">
+            <p id="aperture-note"></p>
+            <p id="shutter-note"></p>
+            <p id="iso-note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="recommend">
+      <div class="section-heading reveal">
+        <p class="eyebrow">상황별 추천</p>
+        <h2>이 상황엔 어떤 모드가 좋을까요?</h2>
+        <p>찍고 싶은 장면을 고르면 추천 모드와 이유를 바로 알려드릴게요.</p>
+      </div>
+      <div class="recommend-grid">
+        <div class="scenario-list reveal" id="scenario-list" role="listbox" aria-label="촬영 상황 선택"></div>
+        <article class="recommend-card reveal" aria-live="polite">
+          <div class="panel-tag" id="scenario-mode">추천 모드</div>
+          <h3 id="scenario-name">인물 사진</h3>
+          <p id="scenario-reason"></p>
+          <p class="scenario-tip" id="scenario-tip"></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <p>카메라를 어렵게 느끼지 않도록, 구조와 원리를 쉽게 보여주는 교육용 전시 페이지입니다.</p>
+    <a href="#top">맨 위로 올라가기</a>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
