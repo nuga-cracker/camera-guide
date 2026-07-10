@@ -15,18 +15,18 @@
 
 ## 파일 구성
 
-- `/home/runner/work/camera-guide/camera-guide/index.html` — 페이지 구조
-- `/home/runner/work/camera-guide/camera-guide/css/style.css` — 스타일, 반응형, 애니메이션
-- `/home/runner/work/camera-guide/camera-guide/js/data.js` — 카메라 부품/모드/상황 데이터
-- `/home/runner/work/camera-guide/camera-guide/js/main.js` — 인터랙션 로직
-- `/home/runner/work/camera-guide/camera-guide/assets/camera-mark.svg` — 페이지에서 사용하는 SVG 아이콘
+- `index.html` — 페이지 구조
+- `css/style.css` — 스타일, 반응형, 애니메이션
+- `js/data.js` — 카메라 부품/모드/상황 데이터
+- `js/main.js` — 인터랙션 로직
+- `assets/camera-mark.svg` — 페이지에서 사용하는 SVG 아이콘
 
 ## 로컬 실행 방법
 
 설치 과정이 필요 없는 정적 웹페이지입니다.
 
 1. 저장소를 내려받거나 압축을 풉니다.
-2. `/home/runner/work/camera-guide/camera-guide/index.html` 파일을 브라우저에서 바로 엽니다.
+2. 저장소 루트의 `index.html` 파일을 브라우저에서 바로 엽니다.
 3. 또는 간단한 로컬 서버가 필요하면 저장소 루트에서 아래 명령을 실행하세요.
 
 ```bash
