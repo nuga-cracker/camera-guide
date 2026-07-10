@@ -10,6 +10,28 @@
     flow: 'film',
     scenario: 'portrait'
   };
+  const DIAL_LAYOUT = {
+    smallViewport: 720,
+    mediumViewport: 980,
+    smallSize: 360,
+    mediumSize: 520,
+    largeSize: 620,
+    radiusRatio: 0.38
+  };
+  const EXPOSURE_TUNING = {
+    minBlur: 4,
+    maxBlur: 24,
+    apertureDivisor: 0.8,
+    motionReference: 2,
+    motionStep: 7,
+    maxBrightness: 1.25,
+    baseBrightness: 0.72,
+    apertureReference: 16,
+    apertureWeight: 0.16,
+    isoBrightnessDivisor: 6400,
+    maxNoise: 0.35,
+    noiseDivisor: 9600
+  };
 
   const partName = document.getElementById('part-name');
   const partSummary = document.getElementById('part-summary');
@@ -47,6 +69,31 @@
   const previewDescription = document.getElementById('preview-description');
 
   const shutterOptions = ['1초', '1/30초', '1/125초', '1/500초', '1/2000초'];
+
+  function getDialSize() {
+    if (modeDial.clientWidth) return modeDial.clientWidth;
+    if (window.innerWidth < DIAL_LAYOUT.smallViewport) return DIAL_LAYOUT.smallSize;
+    if (window.innerWidth < DIAL_LAYOUT.mediumViewport) return DIAL_LAYOUT.mediumSize;
+    return DIAL_LAYOUT.largeSize;
+  }
+
+  function calculateApertureBlur(aperture) {
+    return Math.max(EXPOSURE_TUNING.minBlur, EXPOSURE_TUNING.maxBlur - aperture / EXPOSURE_TUNING.apertureDivisor);
+  }
+
+  function calculateMotionBlur(shutterIndex) {
+    return Math.max(0, (EXPOSURE_TUNING.motionReference - shutterIndex) * EXPOSURE_TUNING.motionStep);
+  }
+
+  function calculateBrightness(aperture, iso) {
+    const apertureContribution = (EXPOSURE_TUNING.apertureReference / aperture) * EXPOSURE_TUNING.apertureWeight;
+    const isoContribution = iso / EXPOSURE_TUNING.isoBrightnessDivisor;
+    return Math.min(EXPOSURE_TUNING.maxBrightness, EXPOSURE_TUNING.baseBrightness + apertureContribution + isoContribution);
+  }
+
+  function calculateNoiseOpacity(iso) {
+    return Math.min(EXPOSURE_TUNING.maxNoise, iso / EXPOSURE_TUNING.noiseDivisor);
+  }
 
   function renderPart() {
     const cameraData = data.parts[state.camera];
@@ -102,9 +149,9 @@
   }
 
   function renderModes() {
-    const dialSize = modeDial.clientWidth || (window.innerWidth < 720 ? 360 : window.innerWidth < 980 ? 520 : 620);
+    const dialSize = getDialSize();
     const center = dialSize / 2;
-    const radius = dialSize * 0.38;
+    const radius = dialSize * DIAL_LAYOUT.radiusRatio;
     modeDial.innerHTML = data.modes.map((mode, index) => {
       const angle = ((Math.PI * 2) / data.modes.length) * index;
       const x = center + Math.sin(angle) * radius;
@@ -164,10 +211,10 @@
     const shutterIndex = Number(shutterRange.value);
     const iso = Number(isoRange.value);
 
-    const apertureBlur = Math.max(4, 24 - aperture / 0.8);
-    const motionBlur = Math.max(0, (2 - shutterIndex) * 7);
-    const brightness = Math.min(1.25, 0.72 + ((16 / aperture) * 0.16) + (iso / 6400));
-    const noiseOpacity = Math.min(0.35, iso / 9600);
+    const apertureBlur = calculateApertureBlur(aperture);
+    const motionBlur = calculateMotionBlur(shutterIndex);
+    const brightness = calculateBrightness(aperture, iso);
+    const noiseOpacity = calculateNoiseOpacity(iso);
 
     document.documentElement.style.setProperty('--aperture-blur', `${apertureBlur}px`);
     document.documentElement.style.setProperty('--motion-blur', `${motionBlur}px`);
